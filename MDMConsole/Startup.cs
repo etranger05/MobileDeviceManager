@@ -13,10 +13,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MobileDeviceManager.Areas.Identity;
-using MobileDeviceManager.Data;
+using MDMConsole.Areas.Identity;
+using MDMConsole.Data;
 
-namespace MobileDeviceManager
+namespace MDMConsole
 {
     public class Startup
     {
@@ -40,7 +40,6 @@ namespace MobileDeviceManager
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<DeviceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

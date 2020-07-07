@@ -1,0 +1,44 @@
+﻿@page "/devicelist"
+
+@using MobileDeviceManager.Data
+@inject DeviceService DeviceService
+
+<h1>Device List</h1>
+
+@if (Devices == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DeviceID</th>
+                <th>DeviceNumber</th>
+                <th>DeviceToken</th>
+                <th>WiFiMacAddress</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in Devices)
+            {
+                <tr>
+                    <td>@device.DeviceId</td>
+                    <td>@device.DeviceNumber</td>
+                    <td>@device.DeviceToken</td>
+                    <td>@device.WiFiMacAddress</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Device[] Devices;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Devices = await DeviceService.GetDeviceAsync();
+    }
+}
